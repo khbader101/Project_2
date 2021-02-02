@@ -11,7 +11,18 @@ from flask import Flask, jsonify, render_template
 app = Flask(__name__)
 engine = create_engine("postgres://postgres:#Drummer101@localhost:5432/Video_Game_DB")
 
+
+
 @app.route("/")
+def welcome():
+    return(
+        f"Use below route to reach our game data!:<br/>"
+        f"/game<br/>"
+
+    )
+
+
+@app.route("/game")
 def game():
     data = engine.execute("SELECT * FROM video_game_view")
 
