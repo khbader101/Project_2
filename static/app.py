@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, MetaData
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
 engine = create_engine("postgres://postgres:#Drummer101@localhost:5432/Video_Game_DB")
@@ -28,7 +28,8 @@ def game():
 
         game_list.append(game_data)
         
-    return jsonify(game_list)
+    return render_template('index.html', game_list=game_list)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
