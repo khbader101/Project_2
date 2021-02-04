@@ -10,6 +10,7 @@ numpy = "*"
 datetime = "*"
 flask-sqlalchemy = "*"
 psycopg2-binary = "*"
+plotly = "*"
 
 [dev-packages]
 
