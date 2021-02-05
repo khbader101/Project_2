@@ -21,10 +21,12 @@ function buildplots() {
         var number_of_games = data.map(row=>row.number_of_games);
         console.log(number_of_games)
 
+        var total_number_of_raters = data.map(row=>row.total_number_of_raters);
+        console.log(total_number_of_raters)
         var avg_user_rating = data.map(row=>row.avg_user_rating);
         console.log(avg_user_rating)
-        var avg_user_rating_count = user_rating_count/number_of_games;
-        console.log(avg_user_rating_count)
+        var price_point_app = data.map(row=>row.price_point_app);
+        console.log(price_point_app)
 
         var countTrace =
         {
@@ -43,24 +45,41 @@ function buildplots() {
         Plotly.newPlot("bar", countData, countLayout);
 
 
-
-        avg_user_rating_count  = user_rating_count/number_of_games   
-
+    
         var usersTrace = 
-                {
-                  x: avg_user_rating_count.slice(0,10).reverse(), //count of users per game by developer
-                  y: developer.slice(0,10).map(value=>`developer ${value}`).reverse(), //developers
-                  type: "bar",
-                  text: developer.slice(0,10).reverse(), //count of games?developers?
-                  orientation: "h"
-                };
-                var usersData = [usersTrace];
-                var usersLayout = 
-                {
-                  title: "Avg Number of Users per Game by Developer",
-                  xaxis: { title: "Avg Number of Users Per Game"},
-                };
-                Plotly.newPlot("bar", usersData, usersLayout);
+        {
+          x: total_number_of_raters.slice(0,10).reverse(), //count of users per game by developer
+          y: developer.slice(0,10).map(value=>`developer ${value}`).reverse(), //developers
+          type: "bar",
+          text: developer.slice(0,10).reverse(), //count of games?developers?
+          orientation: "h"
+        };
+        var usersData = [usersTrace];
+        var usersLayout = 
+        {
+          title: "Avg Number of Users per Game by Developer",
+          xaxis: { title: "Avg Number of Users Per Game"},
+        };
+        Plotly.newPlot("bar2", usersData, usersLayout);
+
+
+
+        var ratingTrace = 
+        {
+          x: avg_user_rating.slice(0,10).reverse(), //ratings
+          y: developer.slice(0,10).map(value=>`Developer ${value}`).reverse(), //developers
+          type: "bar",
+          text: developer.slice(0,10).reverse(), //ratings?developers?
+          orientation: "h"
+        };
+        var ratingData = [ratingTrace];
+        var ratingLayout = 
+        {
+          title: "Avg Rating by Developer", //Avg Rating by Developer
+          xaxis: { title: "Avg Rating by Developer "}, //Avg Rating
+        };
+        Plotly.newPlot("bar3", ratingData, ratingLayout);
+
 
     });
 };

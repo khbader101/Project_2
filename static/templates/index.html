@@ -20,6 +20,7 @@
       <div class="col-md-12 jumbotron text-center">
         <h1>Mobile Game Dashboard</h1>
         <p>Use the interactive charts below to explore the dataset</p>
+        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/55a3f0ce-4e68-482d-855d-46a712baa765/d76jsuh-989399fd-de99-4762-b584-3947f88bc92b.jpg/v1/fill/w_1024,h_576,q_75,strp/flappy_bird_background_by_drunkvikings_d76jsuh-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD01NzYiLCJwYXRoIjoiXC9mXC81NWEzZjBjZS00ZTY4LTQ4MmQtODU1ZC00NmE3MTJiYWE3NjVcL2Q3NmpzdWgtOTg5Mzk5ZmQtZGU5OS00NzYyLWI1ODQtMzk0N2Y4OGJjOTJiLmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.f3yDDA2WkBX6PCAXcR-_U924ieUs9l993eewzQBxgII">
       </div>
     </div>
     <div class="row">
@@ -33,10 +34,16 @@
           <div id="sample-metadata" class="panel-body"></div>
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-6">
         <div id="bar"></div>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-6">
+        <div id="bar2"></div>
+      </div>
+      <div class="col-md-6">
+        <div id="bar3"></div>
+      </div>
+      <div class="col-md-6">
         <div id="gauge"></div>
       </div>
     </div>
@@ -61,7 +68,6 @@
     var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};             
   </script>
   <script src="../static/javascript/graphs.js"></script>
-  <script src="../static/javascript/pandas.csv"></script>
 </body>
 
 </html>
