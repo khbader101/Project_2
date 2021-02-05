@@ -64,6 +64,9 @@ def data():
 
         json_game_list.append(json_game_data)
 
+    #df = pd.DataFrame(json_game_list)   
+    #df.to_csv('pandas.csv')
+
     return jsonify(json_game_list)
 
 if __name__ == "__main__":

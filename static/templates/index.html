@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
+  <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -61,6 +61,7 @@
     var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};             
   </script>
   <script src="../static/javascript/graphs.js"></script>
+  <script src="../static/javascript/pandas.csv"></script>
 </body>
 
 </html>
