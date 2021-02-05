@@ -13,7 +13,7 @@ $("select").change(function () {
 
 });
 
-function buildplots(sampleData) {
+function buildplots() {
     d3.json('/game').then((data) => {
 
         console.log(data);
@@ -43,3 +43,7 @@ function buildplots(sampleData) {
 
     });
 };
+
+
+    buildplots();
+
