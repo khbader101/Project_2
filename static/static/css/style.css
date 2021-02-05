@@ -8,3 +8,6 @@ body {
 .well {
     background-color: floralwhite;
 }
+.jumbotron h1 {
+    font-family: fantasy;
+}
