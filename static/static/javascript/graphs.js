@@ -14,25 +14,24 @@ $("select").change(function () {
 });
 
 function buildplots() {
-    d3.csv("pandas.csv").then((data) => {
+    d3.json("/data").then((data) => {
 
-        //console.log(data);
-        //var data2 = data.data2;
-       // var results = data2.filter(s=>s.price_point_app == sampleData);
-        //var graphData = results[0];
-       // console.log(graphData);
-
-        var price_point_app = data.price_point_app
-        console.log(price_point_app)
-        var number_of_games = data.number_of_games
+        var developer = data.map(row=>row.developer);
+        console.log(developer)
+        var number_of_games = data.map(row=>row.number_of_games);
         console.log(number_of_games)
+
+        var avg_user_rating = data.map(row=>row.avg_user_rating);
+        console.log(avg_user_rating)
+        var avg_user_rating_count = user_rating_count/number_of_games;
+        console.log(avg_user_rating_count)
 
         var countTrace =
         {
             x: number_of_games.slice(0, 10).reverse(), //count of games
-            y: price_point_app.slice(0, 10).map(value => `developer ${value}`).reverse(), //developers
+            y: developer.slice(0, 10).map(value => `developer ${value}`).reverse(), //developers
             type: "bar",
-            text: price_point_app.slice(0, 10).reverse(), //count of games?developers?
+            text: developer.slice(0, 10).reverse(), //count of games?developers?
             orientation: "h"
         };
         var countData = [countTrace];
@@ -42,6 +41,26 @@ function buildplots() {
             xaxis: { title: "# of Games" }, //# of Games
         };
         Plotly.newPlot("bar", countData, countLayout);
+
+
+
+        avg_user_rating_count  = user_rating_count/number_of_games   
+
+        var usersTrace = 
+                {
+                  x: avg_user_rating_count.slice(0,10).reverse(), //count of users per game by developer
+                  y: developer.slice(0,10).map(value=>`developer ${value}`).reverse(), //developers
+                  type: "bar",
+                  text: developer.slice(0,10).reverse(), //count of games?developers?
+                  orientation: "h"
+                };
+                var usersData = [usersTrace];
+                var usersLayout = 
+                {
+                  title: "Avg Number of Users per Game by Developer",
+                  xaxis: { title: "Avg Number of Users Per Game"},
+                };
+                Plotly.newPlot("bar", usersData, usersLayout);
 
     });
 };
