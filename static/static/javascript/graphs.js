@@ -18,7 +18,6 @@ var names = ["Free", "Not Free"];
 function init()
 {
     var dropdownMenu = d3.select("#selDataset");
-    //var dataset = dropdownMenu.property("value");
     d3.json("/data").then((dataset)=>
         {
             console.log(dataset);
@@ -29,6 +28,8 @@ function init()
                 dropdownMenu.append("option").text(sample).property("value",sample);
             });
             var first = sampleNames[0]
+
+            console.log(first)
             buildplots(first)
         });
 }
@@ -43,19 +44,19 @@ function buildplots(sample) {
         var results = sampleMetadata.filter(s=>s.price_point_app == sample);
         console.log(results);
 
-        var developer = data.map(row=>row.developer);
+        var developer = results.map(row=>row.developer);
         console.log(developer)
-        var primary_genre = data.map(row=>row.primary_genre);
+        var primary_genre = results.map(row=>row.primary_genre);
         console.log(primary_genre)
-        var number_of_games = data.map(row=>row.number_of_games);
+        var number_of_games = results.map(row=>row.number_of_games);
         console.log(number_of_games)
 
 
-        var total_number_of_raters = data.map(row=>row.total_number_of_raters);
+        var total_number_of_raters = results.map(row=>row.total_number_of_raters);
         console.log(total_number_of_raters)
-        var avg_user_rating = data.map(row=>row.avg_user_rating);
+        var avg_user_rating = results.map(row=>row.avg_user_rating);
         console.log(avg_user_rating)
-        var price_point_app = data.map(row=>row.price_point_app);
+        var price_point_app = results.map(row=>row.price_point_app);
         console.log(price_point_app)
 
         var countTrace = 
@@ -142,4 +143,4 @@ function buildplots(sample) {
 function optionChanged(sample){
 
  buildplots(sample);
-}
+};
