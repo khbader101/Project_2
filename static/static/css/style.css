@@ -1,12 +1,15 @@
-.jumbotron {
-    background-color: floralwhite;
+
+html, body {
+    background-color: rgb(173, 216, 230);
 }
-body {
-    background-color: lightblue;
+
+.jumbotron {
+    background-color: burlywood;
 }
 
 .well {
-    background-color: floralwhite;
+    background-color: burlywood;
+    margin-top: 10px;
 }
 .jumbotron h1 {
     font-family: fantasy;

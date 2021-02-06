@@ -47,7 +47,7 @@ def game():
 @app.route("/data")
 def data():
     #tf = request.args.get("tf", 0)
-    json_data = engine.execute(f"SELECT * FROM video_game_view2")
+    json_data = engine.execute(f"SELECT * FROM video_game_view3")
      #where price_point_app = {tf}")
 
     json_game_list = []
