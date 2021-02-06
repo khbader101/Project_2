@@ -12,34 +12,36 @@
     //})
 
 //});
+var price_point_app = data.map(row=>row.price_point_app);
+var names = ["Free", "Not Free"];
 
-
-
-
-
-$.ajax({
-    url: "/data",
-    success: function (data) {
-        console.log(data);
-        $("#selDataset").change(function (event) {
-            console.log(event);
-            console.log(event.target);
-            console.log(event.target.value);
-            console.log($( this ).val());
-            var price_point_app = this.value;
-            console.log(price_point_app);
-            if (price_point_app == "Free") {
-                $.grep([data], function (n,i) {
-                    return n.price_point_app === 'Free';
-                });
-            }
+function init()
+{
+    var dropdownMenu = d3.select("#selDataset");
+    //var dataset = dropdownMenu.property("value");
+    d3.json("/data").then((dataset)=>
+        {
+            console.log(dataset);
+            var sampleNames = names;
+            console.log(sampleNames)
+            sampleNames.forEach((sample)=>
+            {
+                dropdownMenu.append("option").text(sample).property("value",sample);
+            });
+            var first = sampleNames[0]
+            buildplots(first)
         });
-    }
- });
+}
+init();
 
 
-function buildplots() {
+
+function buildplots(sample) {
     d3.json("/data").then((data) => {
+
+        var sampleMetadata = data;
+        var results = sampleMetadata.filter(s=>s.price_point_app == sample);
+        console.log(results);
 
         var developer = data.map(row=>row.developer);
         console.log(developer)
@@ -137,5 +139,7 @@ function buildplots() {
 };
 
 
-    buildplots();
+function optionChanged(sample){
 
+ buildplots(sample);
+}
